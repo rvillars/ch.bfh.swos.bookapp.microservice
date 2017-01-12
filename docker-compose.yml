@@ -14,9 +14,13 @@ book-author:
   build: ./book-author-service
   links:
     - registry:registry
+    - book:book-service
+    - author:author-service
 frontend:
   build: ./frontend-service
   links:
     - registry:registry
+    - book:book-service
+    - author:author-service
   ports:
     - "8080:8080"
