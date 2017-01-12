@@ -1,0 +1,22 @@
+registry:
+  build: ./registration-service
+  ports:
+    - "1111:1111"
+book:
+  build: ./book-service
+  links:
+    - registry:registry
+author:
+  build: ./author-service
+  links:
+    - registry:registry
+book-author:
+  build: ./book-author-service
+  links:
+    - registry:registry
+frontend:
+  build: ./frontend-service
+  links:
+    - registry:registry
+  ports:
+    - "8080:8080"

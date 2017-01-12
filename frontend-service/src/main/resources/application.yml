@@ -1,0 +1,26 @@
+# Spring properties
+spring:
+  application:
+    name: frontend-service
+
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+
+# API Proxy configuration
+zuul:
+  routes:
+    book-service:
+      path: /books/**
+      serviceId: book-service
+      stripPrefix: false
+    author-service:
+      path: /authors/**
+      serviceId: author-service
+      stripPrefix: false
+    book-author-service:
+      path: /booksWithAuthor/**
+      serviceId: book-author-service
+      stripPrefix: false
